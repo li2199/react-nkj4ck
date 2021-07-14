@@ -1,0 +1,8 @@
+.center {
+  width: 75%;
+  height: 400px;
+  background-color: greenyellow;
+  position: absolute;
+  right: 0;
+  top: 50px;
+}

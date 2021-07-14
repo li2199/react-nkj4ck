@@ -1,0 +1,24 @@
+.log {
+  width: 100%;
+  height: 400px;
+  background-color: red;
+  position: absolute;
+
+  z-index: 99;
+}
+.put {
+  width: 180px;
+  height: 200px;
+  position: absolute;
+  top: 40%;
+  left: 40%;
+}
+.putname {
+  width: 180px;
+  height: 35px;
+}
+.btn {
+  position: absolute !important;
+  top: 60%;
+  right: 30%;
+}
