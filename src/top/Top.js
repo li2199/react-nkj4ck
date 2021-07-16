@@ -21,7 +21,7 @@ class Top extends React.Component {
     return (
       <div className="top">
         <h1>欢迎使用后台管理系统</h1>
-        <Button type="primary">
+        <Button type="primary" className="login">
           <Link
             to={{
               pathname: '/Log'

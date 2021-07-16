@@ -15,11 +15,13 @@ class Left extends React.Component {
     super();
     this.state = {
       reg: [],
-      title: []
+      title: [],
+      city: []
     };
   }
 
   handleClick = e => {
+    console.log(e.key);
     if (e.key == 1) {
       axios.post('http://localhost:9000/alluser').then(res => {
         this.setState({
@@ -36,11 +38,19 @@ class Left extends React.Component {
         console.log(this.state.title);
       });
     }
+    if (e.key == 5) {
+      axios.get('http://localhost:9000/cityid?cityid=All').then(res => {
+        this.setState({
+          city: res.data
+        });
+      });
+    }
   };
 
   render() {
     const reg = this.state.reg;
     const tit = this.state.title;
+    const city = this.state.city;
     return (
       <div className="left">
         <Menu
@@ -76,7 +86,16 @@ class Left extends React.Component {
             </Menu.Item>
           </SubMenu>
           <SubMenu key="sub2" icon={<AppstoreOutlined />} title="信息管理">
-            <Menu.Item key="5">城市注册</Menu.Item>
+            <Menu.Item key="5">
+              <Link
+                to={{
+                  pathname: '/City',
+                  state: { citys: city }
+                }}
+              >
+                城市注册{' '}
+              </Link>
+            </Menu.Item>
             <Menu.Item key="6">热词管理</Menu.Item>
             <SubMenu key="sub3" title="商铺管理">
               <Menu.Item key="7">店铺审核</Menu.Item>
