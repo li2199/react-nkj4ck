@@ -26,6 +26,7 @@ const columns = [
   }
 ];
 
+
 export default props => {
   const citys = props.location.state.citys;
   citys.map((i, index) => {
