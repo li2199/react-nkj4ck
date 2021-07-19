@@ -37,9 +37,7 @@ const columns = [
     key: 'action',
     render: (text, record) => (
       <Space size="middle">
-        <Button type="primary" onCilk={this.change}>
-          修改
-        </Button>
+        <Button type="primary">修改</Button>
         <Button type="default" className="leave">
           删除
         </Button>
@@ -47,7 +45,7 @@ const columns = [
     )
   }
 ];
-function change() {}
+
 export default props => {
   console.log(props);
   const title = props.location.state.title;

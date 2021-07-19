@@ -40,17 +40,6 @@ const EditableCell = ({
       [dataIndex]: record[dataIndex]
     });
   };
-
-  const save = async () => {
-    try {
-      const values = await form.validateFields();
-      toggleEdit();
-      handleSave({ ...record, ...values });
-    } catch (errInfo) {
-      console.log('Save failed:', errInfo);
-    }
-  };
-
   let childNode = children;
 
   if (editable) {
@@ -109,7 +98,7 @@ export default class EditableTable extends React.Component {
         render: (_, record) =>
           this.state.dataSource.length >= 1 ? (
             <Popconfirm
-              title="Sure to delete?"
+              title="确认删除?"
               onConfirm={() => this.handleDelete(record.key)}
             >
               <a>注销</a>
@@ -134,28 +123,6 @@ export default class EditableTable extends React.Component {
       this.setState({
         dataSource: res.data
       });
-    });
-  };
-  handleAdd = () => {
-    const { count, dataSource } = this.state;
-    const newData = {
-      key: count,
-      name: `Edward King ${count}`,
-      age: '32',
-      address: `London, Park Lane no. ${count}`
-    };
-    this.setState({
-      dataSource: [...dataSource, newData],
-      count: count + 1
-    });
-  };
-  handleSave = row => {
-    const newData = [...this.state.dataSource];
-    const index = newData.findIndex(item => row.key === item.key);
-    const item = newData[index];
-    newData.splice(index, 1, { ...item, ...row });
-    this.setState({
-      dataSource: newData
     });
   };
 
@@ -189,15 +156,6 @@ export default class EditableTable extends React.Component {
     });
     return (
       <div>
-        <Button
-          onClick={this.handleAdd}
-          type="primary"
-          style={{
-            marginBottom: 16
-          }}
-        >
-          Add a row
-        </Button>
         <Table
           components={components}
           rowClassName={() => 'editable-row'}
