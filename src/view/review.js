@@ -37,15 +37,20 @@ const columns = [
     key: 'action',
     render: (text, record) => (
       <Space size="middle">
-        <Button type="primary">修改</Button>
-        <Button type="default" className="leave">
+        <Button type="primary" onClick={()=>change(record.key)}>修改</Button>
+        <Button type="default" className="leave" onClick={()=>del(record.key)}>
           删除
         </Button>
       </Space>
     )
   }
 ];
-
+function change(e){
+  console.log(e)
+}
+function del(e){
+  console.log(e)
+}
 export default props => {
   console.log(props);
   const title = props.location.state.title;
