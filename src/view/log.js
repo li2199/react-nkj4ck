@@ -27,19 +27,20 @@ export default class extends React.Component {
     axios
       .post('http://localhost:9000/loguser', {
         name: encrypt.encrypt(this.state.names, this.state.key),
-        pass: encrypt.encrypt(this.state.psd, this.state.key),
-        power: 'root'
+        pass: encrypt.encrypt(this.state.psd, this.state.key)
       })
       .then(res => {
         console.log(res);
         if (res.data.msg == 'success' && res.data.status == 200) {
           sessionStorage.setItem('admin', this.state.names);
           sessionStorage.setItem('power', res.data.power);
+          sessionStorage.setItem('token', res.data.token);
         }
       });
   }
 
   render() {
+    
     return (
       <div className="log">
         <div className="put">
